@@ -1,0 +1,41 @@
+/*
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!                                                                          !
+!                                                                          !
+!         File Name  : BCTMAT01#HD
+!                                                                          !
+!         Function   :
+! Links to TM subroutines.
+!
+!                                                                          !
+!         Version History                                                  !
+!                                                                          !
+! 01  2-10-86
+!                                                                          !
+!                                                                          !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+*/
+
+#define maxt 100000
+#define maxn 2000
+#define maxnd 2*maxn
+
+
+extern mutq(double a[maxnd+1][maxnd+1], int n1, int n2, int t,
+   double s, double h,
+   double *startingfreq,
+   double steadystatefreq[4][maxnd+1], int newmutant);
+
+extern dumpmatrix(double m[maxnd+1][maxnd+1], int s1, int rows, int s2,
+   int cols, char *s);
+
+extern dumpvector(double *v, int min, int max, char *s);
+
+extern computecumulant(double *vec, double *results, int t);
+
+extern matrix_compute_steady_state_allele_frequency_vector(int nd,
+   double a[maxnd+1][maxnd+1],
+   double s, double h,
+   double steadystatefreq[4][maxnd+1]);
+
+extern setupmatrix(double a[maxnd+1][maxnd+1], int n1, int n2, double s, double h);

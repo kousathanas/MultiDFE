@@ -1,0 +1,212 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <gsl/gsl_rng.h>
+#include <gsl/gsl_randist.h>
+
+#define true 1
+#define false 0
+#define infinity 999999
+#define pi 3.14159265358979
+#define maxranges 5                    /* for numerical integration */
+#define maxsimpsonpoints 1025          /* change genlib.c if these changed */
+
+typedef double (*fun1)();
+
+struct acc
+{
+   int n;
+   double sum;
+   double sumsq;
+};
+
+struct covacc
+{
+   int n;
+   double sumxy, sumx, sumy, sumx2, sumy2;
+};
+
+
+extern int tracelevel;
+
+extern int inputcounter;
+
+extern initcovacc(struct covacc *a);
+
+extern covaccum(struct covacc *a, double x, double y);
+
+extern double covariance(struct covacc *a);
+
+extern double correlation(struct covacc *a);
+
+extern double uniform();
+
+extern initacc(struct acc *a);
+
+extern accum(struct acc *a, double x);
+
+extern double accmean(struct acc *a);
+
+extern double variance(struct acc *a);
+
+extern getseed();
+
+extern getseedquick();
+
+extern writeseed();
+
+extern double normal(double mu, double sdev);
+
+extern double normal01();
+
+extern quicknormal(double *x1, double *x2);
+
+extern double doublegamma();
+
+extern wishart();
+
+extern bivnormal(double *z1, double *z2,
+              double epsilon1, double epsilon2, double rho);
+
+extern double se();
+ 
+extern printmse();
+
+extern printmsefile();
+
+extern gabort();
+
+extern generatepoissontable (double mean, int *lastnumber, double *table, int max);
+
+extern int poisson (int x, double *y);
+
+extern int binarysearchcumulative();
+
+extern int discrete();
+
+extern int samplewithoutreplacement();
+
+extern trap();
+
+extern getint(char *s, int *i, int min, int max);
+
+extern getintandskip(char *s, int *i, int min, int max);
+
+extern printint ();
+
+extern printtail();
+
+extern int cointoss();
+
+extern printline ();
+
+extern spaces();
+
+extern getrealandskip(char *s, double *i, double min, double max);
+
+extern double calculaterealmean(double *a, int n);
+
+extern tracestart();
+
+extern trace();
+
+extern outputrep(int j, int howoften);
+
+extern outputrepdot(int j, int howoften);
+
+extern monitorinput();
+
+extern double normalheight(double x, double mu, double var);
+
+extern double simpson (double *x, int points, double a, double b);
+
+extern int odd(int i);
+
+extern int solvequadratic(double a, double b, double c, double *r1, double *r2);
+
+extern int skiptoendofline(FILE *f);
+
+extern double aitken(double *a, int t);
+
+extern int factorial(int n);
+
+extern double doublefactorial(double x);
+
+extern double logdoublefactorial(double x);
+
+extern double gammaht();
+
+extern double gammaalpha();
+
+extern double numericalinteg(double *resvec,
+   double start, double finish, fun1 fn, int ranges,    int *pointsperrange);
+
+extern FILE *openforread(char *str);
+
+extern FILE *openforwrite(char *str, char *mode);
+
+extern FILE *openforreadsilent(char *str);
+
+extern FILE *openforwritesilent(char *str, char *mode);
+
+extern double gamdev(int ia, double epsilon);
+
+extern double series_gamma(double beta);
+
+extern quadratic_regression(double n, double sumx, double sumx2, double sumy,
+  double sumx3, double sumxy, double sumx4, double sumx2y,
+  double *b1, double *b2, double *b3);
+
+extern int findtext(char *s, FILE *inptr);
+
+extern double ran3(long *idum);
+
+extern unsigned long iran3();
+
+extern int countbits(unsigned long n);
+
+extern find1dmax(double *xvec, double *yvec, double *xmax, double *ymax);
+
+extern double find2dmax(double *xvec, double *yvec, double zmatrix[4][4], double *xmax, double *ymax);
+
+extern int bnldev(double pp, int n);
+
+extern float gengam(float alpha, float beta);
+
+extern int genpoisson(double xm);
+
+extern void qsortreals (double *a, int from, int to);
+
+extern FILE *openfilecheck2dir(char *str);
+
+extern float rtsafe(void (*funcd)(float, float *, float *), float x1, float x2, float xacc);
+
+extern bivariatenormal(double *z1, double *z2, double var1, double var2, double cov);
+
+extern get_silent_mode(int argc, char *argv[], int *silent_mode);
+
+extern make_numbered_file_name(char *outfilename, char *filestr, int ind);
+
+extern int_to_string(int v, char *str, int max__len);
+
+extern double bilinear_interpolation(double x1, double x2, double y1, double y2,
+   double x1y1, double x1y2, double x2y1, double x2y2,
+   double x, double y);
+
+extern double kimura_fixation_prob(double s, int N);
+
+extern double normal_cumulative_probability_function(const double x);
+
+extern dump_matrix(char *s, double **X, int rows, int cols);
+
+extern compute_matrix_transpose(double **X, double **XT, int rows, int cols);
+
+extern multiply_matrices(double **RES, double **X, double **Y, int rows_X,
+   int cols_X, int rows_Y, int cols_Y);
+
+extern double normal_approx_to_binomial(int i, int n, double p);
+
+extern loadparam(double *paramvec, int *curpos, double **p);
+
+extern unloadparam(double *paramvec, int *curpos, double x[]);
