@@ -14,7 +14,7 @@ After you download these tables, you need to specify in the file "directory_conf
 
 3) If you have specified the lookup tables correctly then you can run the program with the following command:
 
-./Multi_DFE -N1 100 -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.sfs
+./MultiDFE -N1 100 -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.sfs
 
 the example.sfs file has an example of the input SFS (see at the bottom of README for explanation)
 
@@ -66,7 +66,7 @@ seed:0  acc:0   selmode:2       nspikes:0       ranrep:1        L:-217141.544847
 
 explanation of OUTPUT:
 seed: the seed used for the random generator. You can change it by adding GSL_RNG_SEED= before the command.
-GSL_RNG_SEED=1 ./Multi_DFE -N1 100 -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.ou
+GSL_RNG_SEED=1 ./MultiDFE -N1 100 -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.ou
 
 L: the loglikelihood of the model given the data
 
