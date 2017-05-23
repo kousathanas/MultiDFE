@@ -1,4 +1,4 @@
-Steps for running MultiDFEest
+Steps for running MultiDFE
 
 1) Unpack, cd to the unpacked directory and then compile with this command:
 
