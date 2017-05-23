@@ -8,7 +8,7 @@ gcc -O3 -o MultiDFE *.c  -lm -lgsl -lgslcblas -w
 
 To run the program you need a folder with the lookup tables for the likelihood calculation. The program will not run without specifying the folder where these tables are located. These tables are quite large in size (5.3 Gbytes for N1=100). These lookup tables can be downloaded at prof. Peter Keigtley's website: http://www.homepages.ed.ac.uk/pkeightl//dfe_alpha/dfe-alpha-download.html along with the original DFE-alpha program.
 
-If you have trouble downloading them make sure to contact me to help you.
+If you have trouble downloading them make sure to contact me (akousath *at* pasteur.fr) to help you.
 
 After you download these tables, you need to specify in the file "directory_config.dat" the location of the tables. The directory specification should branch so the contents of the specified folder are these 3 folders: n1_20, n1_100, n1_1000
 
