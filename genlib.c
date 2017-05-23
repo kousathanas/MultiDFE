@@ -587,6 +587,7 @@ int size;
          }
       }
    } while (size > 0);
+   return(1);
 }
 
 
@@ -895,12 +896,14 @@ tracestart()
 {
 printf("Enter trace level ");
 scanf("%d", &tracelevel);
+return(1);
 }
 
 trace(s, i)
 {
    if (tracelevel==0) return(0);
    printf("%s %d\n", s, i);
+   return(1);
 }
 
 
@@ -1530,6 +1533,7 @@ int findtext(char *s, FILE *inptr)
       }
       else curchar = 0;
    }
+   return(1);
 }
 
 /* FIND1DMAX */

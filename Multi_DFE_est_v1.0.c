@@ -99,11 +99,11 @@ double  likelihood_function (const gsl_vector *v, void *params)
 
   double lik=0;
   double f0=0,t=0,mean_s=0,sum_prob=0;
-  double gamma_alpha=0,gamma_beta=0;
+  double gamma_beta=0;
   double beta_alpha=0,beta_beta=0;
   double beta_scaler=0;
   double logmean=0,logsigma=0;
-  double mean_s_steps=0,mean_s2_steps=0;
+  double mean_s_steps=0;
   f0 = gsl_vector_get(v, 0);
 
   if (!conpop){t=tau;}else{t=100;}
