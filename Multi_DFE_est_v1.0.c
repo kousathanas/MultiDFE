@@ -1821,7 +1821,7 @@ fprintf(fileresults,"mean:%E\tmean2:%E\tmeanH:%E\t",save_mle.mean_s,save_mle.mea
  double MEAN_SIM[2], true_prop[4],true_fix_prob=0;
   if (fsim==1){
     /*read simulated s and s^2 and harmonic mean*/
-    char filename_mean[1000]="";
+    char filename_mean[maxnd]="";
     strcat(filename_mean,sfs_filename);
     FILE *file1= fopen(strcat(filename_mean,".mean"), "r" );
     //printf("%s\n",filename_mean); 
@@ -1856,7 +1856,8 @@ fprintf(fileresults,"\n");
 //dumpvector(save_mle.FVS, 0, N2*2, "FVSexp"); 
  //printf("%d\n",sampleN);
  // printf("%d\n",sampleS);
-
+/
+ */
  int * discreteN = (int*) calloc (nalleles+2, sizeof(int));
  int * discreteS = (int*) calloc (nalleles+2, sizeof(int));
 
@@ -1864,11 +1865,11 @@ fprintf(fileresults,"\n");
  binomial_sampling(save_mle.N2,nalleles,sampleS,save_mle.FVS,discreteS);
 
  //////////////////////////// 
-     char filename_SFS[1000]="";
+     char filename_SFS[maxnd]="";
     strcat(filename_SFS,sfs_filename);
 FILE *fileSFS= fopen(strcat(filename_SFS,".expSFS.out"), "a" );
-fprintf(fileSFS,"%s\n0 0\n0 0\n%d\n",sfsname,nalleles);
-
+//fprintf(fileSFS,"%s\n0 0\n0 0\n%d\n",sfsname,nalleles);
+fprintf(fileSFS,"%d\n",nalleles);
    for (i=0;i<nalleles;i++)
   {
   fprintf(fileSFS,"%d ",discreteS[i]);
@@ -1882,8 +1883,8 @@ fprintf(fileSFS,"%s\n0 0\n0 0\n%d\n",sfsname,nalleles);
   }
   
     fprintf(fileSFS,"\n\n");
- //////////////////////////// 
-      char filename_freq_SFS_sel[1000]="";
+
+      char filename_freq_SFS_sel[maxnd]="";
     strcat(filename_freq_SFS_sel,sfs_filename);
 FILE *freq_SFS_sel= fopen(strcat(filename_freq_SFS_sel,".obs-exp.neu-sel.SFS.out"), "w" );
 int *sfs_freqS,*sfs_freqN;
@@ -1897,19 +1898,17 @@ sfsfold_f(nalleles,discreteN,sfs_freqN,0);
   fprintf(freq_SFS_sel,"no.derived_alleles\tneu_obs\tneu_exp\tsel_obs\tsel_exp\t\n");
     for (i=0;i<nalleles;i++)
   {
-  fprintf(freq_SFS_sel,"%d\t%f\t%d\t%f\t%d\n",i,par[i+nalleles],sfs_freqN[i],par[i],sfs_freqS[i]);
+  fprintf(freq_SFS_sel,"%d\t%.0f\t%d\t%.0f\t%d\n",i,par[i+nalleles],sfs_freqN[i],par[i],sfs_freqS[i]);
   
   }
   fprintf(freq_SFS_sel,"\n");  
-
-*/
 
 
 //dumpvector(discreteN, 0, nalleles, "exp_neu"); 
 //dumpvector(discreteS, 0, nalleles, "exp_sel");
 
- // free(discreteN);
- // free(discreteS);
+  free(discreteN);
+  free(discreteS);
   
   free(save_mle.preFVS);
   free(save_mle.FVS);
