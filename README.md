@@ -33,24 +33,18 @@ Explanation of arguments:
 
 Please check the example.sfs file which looks like this:
 
-name  
-0 0  
-0 0  
-20  
-994838 2351 788 478 271 233 165 139 120 85 69 70 72 61 46 58 31 35 40 50 0  
-972726 10843 4558 2650 1700 1231 887 789 705 534 498 442 385 354 323 296 271 294 274 240 0  
+20
+994838 2351 788 478 271 233 165 139 120 85 69 70 72 61 46 58 31 35 40 50 0
+972726 10843 4558 2650 1700 1231 887 789 705 534 498 442 385 354 323 296 271 294 274 240 0 
 
-You have six lines:  
-Line 1: Just put a string for name, it doesnt matter  
-Line 2&3: this was supposed to contain the divergence data. Since my program only infers the DFE, these are not even used so just leave it at 0 for now.  
-Line 4: Sample size  
-Line 5&6: the SFS, space or tab (white space) separated  
-Line5: SFS for selected class  
-Line6: SFS for neutral class  
+You have three lines:  
+Line 1: Sample size  
+Line 2&3: the SFS, space or tab (white space) separated  
+Line2: SFS for selected class  
+Line3: SFS for neutral class  
 
 the SFSs should always be of length sample size +1  
 if your you have a sample size of 20, then the SFS contains 21 values (this is because the 0th column, ie. unmutated class is included)  
-Basically you only need to vary lines 4,5,6 between datasets. Lines 1,2,3 dont matter.  
 
 I recommend that you use always the folded spectrum so have option -sfsfold set to 1 (this will always fold the SFS).  
 
