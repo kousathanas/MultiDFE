@@ -880,37 +880,32 @@ vector_s_average(int n,double P1,double *fv1,double *fv2, double *fv_out)
     }
 }
 /******************************************************************************/
-output_sfs_to_file_thanasis_format(int n, int *sfs1,int *sfs2,char *sfs_filename)
+output_sfs_to_file_thanasis_format(int n,int sample1, int *sfs1,int *sfs2,char *sfs_filename)
 {
 
-  FILE *file= fopen(sfs_filename, "w" );
 
-  int i;
+	  FILE *file= fopen(sfs_filename, "w" );
+	  int i;
 
+	  //selected sites first
+	  fprintf(file,"%d\n",sample1);
 
+	  for (i=1;i<n;i++){
 
-  //neutral sites first
+	    fprintf(file,"%d ",sfs2[i]);
 
-  for (i=0;i<n;i++){
+	  }
 
-    fprintf(file,"%d ",sfs1[i]);
+	  fprintf(file,"\n");
+	  //neutral sites second
+	  for (i=1;i<n;i++){
 
-
-  }
-
-  fprintf(file,"\n");
-
-  //selected sites second
-
-  for (i=0;i<n;i++){
-
-    fprintf(file,"%d ",sfs2[i]);
-
-  }
+	    fprintf(file,"%d ",sfs1[i]);
 
 
-  fclose(file);
+	  }
 
+	  fclose(file);
 }
 /******************************************************************************/
 output_sfs_to_file_peter_format(int n,int sample1, int sample2, int *sfs1,int *sfs2,char *sfs_filename)
@@ -973,22 +968,39 @@ fprintf(file,"0");
 
 }
 /******************************************************************************/
-
-
-get_sfs(int alleles,int *par,char *sfs_filename)
+get_sfs(int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename)
 {
 
-  int i;
-  int read;
-  // char line[80];
+  int i=0;
+  int gene_number=0,sum=0;
   FILE *file= fopen(sfs_filename, "r" );
 
-  for (i =0 ;i<alleles; i++)
+  fscanf (file, "%d", nalleles);
+
+  //printf("%s %d %d %d %d %d\n",name,sel_sites,sel_diff,neu_sites,neu_diff,*nalleles);
+
+  fscanf (file, "%f", &sfs_sel[0]);
+  //printf("%d\n",sfs_sel[0]);
+  sum=0;
+  for (i =1 ;i<=*nalleles; i++)
     {
-      fscanf (file, "%d", &read);
-      par[i]=read;
+      fscanf (file, "%f", &sfs_sel[i]);
+      //printf("%f\n",sfs_sel[i]);
+      sum+=sfs_sel[i];
     }
 
+//printf("next\n");
+  fscanf (file, "%f", &sfs_neu[0]);
+  //printf("%d\n",sfs_neu[0]);
+  sum=0;
+  for (i =1 ;i<=*nalleles; i++)
+    {
+      fscanf (file, "%f", &sfs_neu[i]);
+      //printf("%d\n",sfs_neu[i]);
+      sum+=sfs_neu[i];
+    }
+
+  //monitorinput();
   fclose(file);
 
 }

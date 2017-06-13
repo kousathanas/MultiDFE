@@ -1662,16 +1662,14 @@ int argc; char **argv;
 
 /* read in the SFS
 FORMAT: 
-name
-sel_sites sel_diffs
-neu_sites neu_diffs
 nalleles
 selected sfs[0..nalleles]
 neutral sfs[0..nalleles]
 */
 
 //get_sfs_peter1(&total_neu,&total_sel,&nalleles,sfs_sel,sfs_neu,sfs_filename);
-get_sfs_peter2(&sfsname,&total_neu,&total_sel,&nalleles,sfs_sel,sfs_neu,sfs_filename,&sel_sites,&sel_diff,&neu_sites,&neu_diff);
+//get_sfs_peter2(&sfsname,&total_neu,&total_sel,&nalleles,sfs_sel,sfs_neu,sfs_filename,&sel_sites,&sel_diff,&neu_sites,&neu_diff);
+get_sfs(&nalleles,sfs_sel,sfs_neu,sfs_filename);
 
 par = calloc (2*(nalleles+1), sizeof(float));
 
@@ -1802,9 +1800,6 @@ fprintf(fileresults,"logsigma:%f\t",save_mle.beta);
  break;
 }//switch end
 
-
-
-
 /*calculate proportion of mutations in fixed Nes ranges*/
 double prop[4],Ne_s_lower=0,Ne_s_upper=0;
 Ne_s_lower=0;
@@ -1838,9 +1833,7 @@ fprintf(fileresults,"mean:%E\tmean2:%E\tmeanH:%E\t",save_mle.mean_s,save_mle.mea
       }
 
 fprintf(fileresults,"truemean:%E\ttruemean2:%E\ttruemeanH:%E\t",MEAN_SIM[0],MEAN_SIM[1],MEAN_SIM[2]);
- 
-    
-    
+
     for(i = 0; i <= 3; i++)
     {
     fscanf (file1, "%f", &read);

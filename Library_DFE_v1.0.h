@@ -94,9 +94,9 @@ eqf_using_matrix_inversion(int n1,double s,double **a,double *egf_out);
 vector_average(int n1,int n2,double *fv1,double *fv2, double *fv_out);
 vector_s_average(int n,double P1,double *fv1,double *fv2, double *fv_out);
 
-output_sfs_to_file_thanasis_format(int n, int *sfs1,int *sfs2,char *sfs_filename);
+output_sfs_to_file_thanasis_format(int n,int sample1, int *sfs1,int *sfs2,char *sfs_filename);
 output_sfs_to_file_peter_format(int n,int sample1, int sample2, int *sfs1,int *sfs2,char *sfs_filename);
-get_sfs(int alleles,int *par,char *sfs_filename);
+get_sfs(int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename);
 
 get_sfs_peter1(int *total_neu,int *total_sel,int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename);
 get_sfs_peter2(char *sfsname,float *total_neu,float *total_sel,int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename,float *sel_sites,float *sel_diff,float *neu_sites,float *neu_diff);
