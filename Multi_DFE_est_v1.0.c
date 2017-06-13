@@ -1791,7 +1791,7 @@ fprintf(fileresults,"beta:%f\t",save_mle.beta);
  case 3:
 fprintf(fileresults,"alpha:%E\t",save_mle.alpha);
 fprintf(fileresults,"beta:%E\t",save_mle.beta);
-fprintf(fileresults,"beta_scaler:%E\t",save_mle.beta_scaler);
+//fprintf(fileresults,"beta_scaler:%E\t",save_mle.beta_scaler);
  break;
  
   case 4:
