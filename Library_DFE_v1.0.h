@@ -18,7 +18,7 @@
 
 /******************************************************************************/
 #define H 0.5
-#define maxnd 2000
+#define maxnd 10000
 
 #define neutral 0
 #define selected 1
