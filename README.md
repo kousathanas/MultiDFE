@@ -4,6 +4,9 @@
 
 gcc -O3 -o MultiDFE *.c  -lm -lgsl -lgslcblas -w
 
+Alternatively, you can also type
+make
+
 2) Now you should have an executable Multi_DFE.
 
 To run the program you need a folder with the lookup tables for the likelihood calculation. The program will not run without specifying the folder where these tables are located. These tables are quite large in size (4.5 Gbytes). 
@@ -12,11 +15,11 @@ These lookup tables can be downloaded here :  http://datashare.is.ed.ac.uk/bitst
 
 If you have trouble downloading them make sure to contact me (akousath *at* pasteur.fr) to help you.
 
-After you download these tables, you need to specify in the file "directory_config.dat" the location of the tables. The directory specification should branch so the contents of the specified folder are these 3 folders: n1_20, n1_100, n1_1000
+After you download these tables, you need to specify in the file "directory_config.dat" the location of the tables. The directory specification should branch so the contents of the specified folder are these 3 folders: n1_20, n1_100, n1_1000. In the present implemention only lookup tables in folder n1_100 will be used.
 
 3) If you have specified the lookup tables correctly then you can run the program with the following command:
 
-./MultiDFE -N1 100 -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.sfs
+./MultiDFE -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.sfs
 
 the example.sfs file has an example of the input SFS (see at the bottom of README for explanation)  
 
@@ -31,12 +34,12 @@ Explanation of arguments:
 #########################################################################################
 #Input files
 
-Please check the example.sfs file which looks like this:
+Please check the example.sfs file which looks like this:  
 
-20
-994838 2351 788 478 271 233 165 139 120 85 69 70 72 61 46 58 31 35 40 50 0
+20  
+994838 2351 788 478 271 233 165 139 120 85 69 70 72 61 46 58 31 35 40 50 0  
 972726 10843 4558 2650 1700 1231 887 789 705 534 498 442 385 354 323 296 271 294 274 240 0 
-
+  
 You have three lines:  
 Line 1: Sample size  
 Line 2&3: the SFS, space or tab (white space) separated  
