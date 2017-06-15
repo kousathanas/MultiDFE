@@ -55,7 +55,7 @@ int selmode=0;
 int sfsfold=0;
 int MAX_t,finalN2=0;
 
-int N1=0;//global parameter for N1
+int N1=100;//global parameter for N1
 int en2=0;//global parameter for N2
 double tau;
 int nalleles=0;
@@ -1418,18 +1418,17 @@ int argc; char **argv;
 	  // {"brief",   no_argument,       &verbose_flag, 0},
 	  /* These options don't set a flag.
 	     We distinguish them by their indices. */
-	  {"N1",     required_argument,0, 'a'},
-	  {"conpop",  required_argument,0, 'b'},
-	  {"sfsfold",  required_argument, 0, 'c'},
-	  {"selmode",  required_argument, 0, 'd'},
-	  {"nspikes",    required_argument, 0, 'e'},
-	  {"ranrep",    required_argument, 0, 'f'},
-	  {"file",    required_argument, 0, 'g'},
-	  {"fsim",    required_argument, 0, 'h'},
-	  {"N2lower",    required_argument, 0, 'i'},
-	  {"N2upper",    required_argument, 0, 'j'},
-	  {"N2",    required_argument, 0, 'k'},
-	  {"acc",    required_argument, 0, 'l'},	  
+	  {"conpop",  required_argument,0, 'a'},
+	  {"sfsfold",  required_argument, 0, 'b'},
+	  {"selmode",  required_argument, 0, 'c'},
+	  {"nspikes",    required_argument, 0, 'd'},
+	  {"ranrep",    required_argument, 0, 'e'},
+	  {"file",    required_argument, 0, 'f'},
+	  {"fsim",    required_argument, 0, 'g'},
+	  {"N2lower",    required_argument, 0, 'h'},
+	  {"N2upper",    required_argument, 0, 'i'},
+	  {"N2",    required_argument, 0, 'j'},
+	  {"acc",    required_argument, 0, 'k'},
   
 	};
       /* getopt_long stores the option index here. */
@@ -1455,39 +1454,36 @@ int argc; char **argv;
 	  break;
 
 	case 'a':
-	  N1=atoi(optarg);
-	  break;   
-	case 'b':
 	  conpop=atoi(optarg);
 	  break;     
-	case 'c':
+	case 'b':
 	  sfsfold=atoi(optarg);
 	  break;     
-	case 'd':
+	case 'c':
 	  selmode=atoi(optarg);
 	  break;     
-	case 'e':
+	case 'd':
 	  nspikes=atoi(optarg);
 	  break;
-	case 'f':
+	case 'e':
 	  ranrep=atoi(optarg);
 	  break;
-	case 'g':
+	case 'f':
 	  sfs_filename=optarg;
 	  break;
-	case 'h':
+	case 'g':
 	  fsim=atoi(optarg);
 	  break;
-	case 'i':
+	case 'h':
 	  gss_lower=atoi(optarg);	  
 	  break;
-	case 'j':
+	case 'i':
 	  gss_upper=atoi(optarg);
 	  break;
-	case 'k':
+	case 'j':
 	  N2=atoi(optarg);
 	  break;
-	case 'l':
+	case 'k':
 	  acc=atoi(optarg);
 	  break;
 	case '?':
@@ -1513,7 +1509,6 @@ int argc; char **argv;
   const gsl_rng_type * T1;
   T1 = gsl_rng_taus;
   gsl_rng  *rgen1 =gsl_rng_alloc(T1);
-  
 
   /*parameterisation of selection*/
   npar=1;//f0 parameter
