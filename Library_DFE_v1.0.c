@@ -84,7 +84,7 @@ int get_average_egf_vecs_1_and_2(double s,int n1, int n2, double t2_real,
 }
 
 /******************************************************************************/
-get_upper_lower_int(double parm, int *lower, int *upper, int n_int_evaluated, int *int_evaluated_vec)
+void get_upper_lower_int(double parm, int *lower, int *upper, int n_int_evaluated, int *int_evaluated_vec)
 {
   int i;
   *lower = undefined_int;
@@ -103,7 +103,7 @@ get_upper_lower_int(double parm, int *lower, int *upper, int n_int_evaluated, in
     }
 }
 /******************************************************************************/
-get_upper_lower_double(double parm, double*lower, double *upper,
+void get_upper_lower_double(double parm, double*lower, double *upper,
 		       int n_int_evaluated, double *double_evaluated_vec)
 {
   int i;
@@ -123,7 +123,7 @@ get_upper_lower_double(double parm, double*lower, double *upper,
     }
 }
 /******************************************************************************/
-get_s_ranges()
+void get_s_ranges()
 {
   int i, stat, ind, i1;
   double d1, d2, d3;
@@ -146,7 +146,7 @@ get_s_ranges()
 
 }
 /******************************************************************************/
-get_int_evaluated_vec(int *int_evaluated_vec, int *n_int_evaluated,
+void get_int_evaluated_vec(int *int_evaluated_vec, int *n_int_evaluated,
 		      int *int_lower, int *int_step, 
 		      char *int_evaluated_vec_file)
 {
@@ -186,7 +186,7 @@ get_int_evaluated_vec(int *int_evaluated_vec, int *n_int_evaluated,
 
 }
 /******************************************************************************/
-scale_vector(double *vec, int n2, double total_density_s0)
+void scale_vector(double *vec, int n2, double total_density_s0)
 {
   int i;
   double tot = 0;
@@ -252,7 +252,7 @@ int get_binary_egf_vec(char *buffer, int n, int t2, double s, double *egf_vec)
   return 1;
 }
 /******************************************************************************/
-fold_vector_double(double *vec, int counter)
+void fold_vector_double(double *vec, int counter)
 {
   int i, j;
   j = 1;
@@ -265,7 +265,7 @@ fold_vector_double(double *vec, int counter)
     }
 }
 /******************************************************************************/
-fold_vector_int(int *vec, int counter)
+void fold_vector_int(int *vec, int counter)
 {
   int i, j;
   j = 1;
@@ -308,7 +308,7 @@ int nearest_n2_ind(int n2_real)
   return ind;
 }
 /******************************************************************************/
-read_phase1_phase2_file_into_buffer(int n1, int phase, int n2, int t2, 
+void read_phase1_phase2_file_into_buffer(int n1, int phase, int n2, int t2,
 				    char *buffer,
 				    int file_size_bytes)
 {
@@ -350,7 +350,7 @@ read_phase1_phase2_file_into_buffer(int n1, int phase, int n2, int t2,
   fclose(inf);
 }
 /******************************************************************************/
-read_const_pop_file_into_buffer(int n1, char *buffer, int file_size_bytes)
+void read_const_pop_file_into_buffer(int n1, char *buffer, int file_size_bytes)
 {
   char file_str[max_str_len];
   FILE *inf, *fopen();
@@ -366,7 +366,7 @@ read_const_pop_file_into_buffer(int n1, char *buffer, int file_size_bytes)
   fclose(inf);
 }
 /******************************************************************************/
-compute_weighted_average_egf_vec(double t2_real, int t2_lower, int t2_upper,
+void compute_weighted_average_egf_vec(double t2_real, int t2_lower, int t2_upper,
 				 double *egf_vec_lower, double *egf_vec_upper,
 				 double *egf_vec, int n2d)
 {
@@ -427,7 +427,7 @@ int get_const_pop_egf_vec(double s, int n1, double *egf_vec, char *buffer_const_
   return (1);
 }
 /******************************************************************************/
-assign_int_from_read_buff(int *res, char *buffer, int start)
+void assign_int_from_read_buff(int *res, char *buffer, int start)
 {
   int temp, i;
   char *ptr, ch;
@@ -485,7 +485,7 @@ int compute_file_size_bytes(int n)
   return (file_size_bytes);
 }
 /******************************************************************************/
-set_up_file_name(int n1, char *froot, char *file_name)
+void set_up_file_name(int n1, char *froot, char *file_name)
 {
   int len;
   static char n1_str[max_str_len];
@@ -505,7 +505,7 @@ set_up_file_name(int n1, char *froot, char *file_name)
   //   monitorinput();
 }
 /******************************************************************************/
-get_data_path(char *data_path)
+void get_data_path(char *data_path)
 {
   FILE *inf, *fopen();
   int stat;
@@ -515,7 +515,7 @@ get_data_path(char *data_path)
   //   printf("get_data_path: data_path %s\n", data_path); monitorinput();
 }
 /******************************************************************************/
-get_s_evaluated_vec(double *s_evaluated_vec, int *n_s_evaluated,
+void get_s_evaluated_vec(double *s_evaluated_vec, int *n_s_evaluated,
 		    int *n_s_evaluated_file, char *s_evaluated_vec_file)
 {
   int stat;
@@ -549,7 +549,7 @@ get_s_evaluated_vec(double *s_evaluated_vec, int *n_s_evaluated,
   //   monitorinput();
 }
 /******************************************************************************/
-get_lower_upper(int ind, double *s_evaluated_vec, int n_s_evaluated,
+void get_lower_upper(int ind, double *s_evaluated_vec, int n_s_evaluated,
 		double *lower, double *upper)
 {
   double x, temp_r;
@@ -574,7 +574,7 @@ get_lower_upper(int ind, double *s_evaluated_vec, int n_s_evaluated,
     }
 }
 /******************************************************************************/
-dumpvector(double *v, int min, int max, char *s)
+void dumpvector(double *v, int min, int max, char *s)
 {
   int i, control = 0;
   //   printf("\n");
@@ -592,7 +592,7 @@ dumpvector(double *v, int min, int max, char *s)
   printf("\n");
 }
 /******************************************************************************/
-dumpmatrix(double **m, int s1,
+void dumpmatrix(double **m, int s1,
 	   int rows, int s2, int cols, char *s)
 {
   int i, j;
@@ -617,7 +617,7 @@ double selfn(double q, double s, double h)
   return( q + (num/denom));
 }
 /******************************************************************************/
-setuprow(double **a, double p, int row, int n)
+void setuprow(double **a, double p, int row, int n)
 {
 
   double z;         /*probability of zero failures*/
@@ -647,7 +647,7 @@ setuprow(double **a, double p, int row, int n)
   for (j=0; j<=n; j++) a[row][j] = a[row][j]/y;
 }
 /******************************************************************************/
-setupmatrix(double **a, int n1, int n2, double s, double h)
+void setupmatrix(double **a, int n1, int n2, double s, double h)
 {
   int i;
   double p;
@@ -669,7 +669,7 @@ setupmatrix(double **a, int n1, int n2, double s, double h)
 
 }
 /******************************************************************************/
-matrixinvert(int N, double **a,double *inverter)
+void matrixinvert(int N, double **a,double *inverter)
 {
 
   int i, j, lotkin_signum;
@@ -750,7 +750,7 @@ matrixinvert(int N, double **a,double *inverter)
   gsl_permutation_free(lotkin_perm);
 }
 /******************************************************************************/
-tmiterate(double **a,double *mut1,
+void tmiterate(double **a,double *mut1,
 	  int t, int n1, int n2,int decay,double *sumf)
 {
 
@@ -796,7 +796,7 @@ tmiterate(double **a,double *mut1,
   free(mut2);
 }
 /******************************************************************************/
-tmiterate2(double **a,double *mut1,
+void tmiterate2(double **a,double *mut1,
 	   int t, int n1, int n2,int decay,double **a1)
 {
 
@@ -852,13 +852,13 @@ tmiterate2(double **a,double *mut1,
 
 }
 /******************************************************************************/
-eqf_using_matrix_inversion(int n1,double s,double **a,double *egf_out)
+void eqf_using_matrix_inversion(int n1,double s,double **a,double *egf_out)
 {
   setupmatrix(a, n1, n1, s, H);
   matrixinvert(n1,a,egf_out);
 }
 /******************************************************************************/
-vector_average(int n1,int n2,double *fv1,double *fv2, double *fv_out)
+void vector_average(int n1,int n2,double *fv1,double *fv2, double *fv_out)
 {
   int i;
   for (i=0;i<n2;i++)
@@ -869,7 +869,7 @@ vector_average(int n1,int n2,double *fv1,double *fv2, double *fv_out)
     }
 }
 /******************************************************************************/
-vector_s_average(int n,double P1,double *fv1,double *fv2, double *fv_out)
+void vector_s_average(int n,double P1,double *fv1,double *fv2, double *fv_out)
 {
   int i;
   for (i=0;i<n;i++)
@@ -880,7 +880,7 @@ vector_s_average(int n,double P1,double *fv1,double *fv2, double *fv_out)
     }
 }
 /******************************************************************************/
-output_sfs_to_file_thanasis_format(int n,int sample1, int *sfs1,int *sfs2,char *sfs_filename)
+void output_sfs_to_file_thanasis_format(int n,int sample1, int *sfs1,int *sfs2,char *sfs_filename)
 {
 
 
@@ -908,7 +908,7 @@ output_sfs_to_file_thanasis_format(int n,int sample1, int *sfs1,int *sfs2,char *
 	  fclose(file);
 }
 /******************************************************************************/
-output_sfs_to_file_peter_format(int n,int sample1, int sample2, int *sfs1,int *sfs2,char *sfs_filename)
+void output_sfs_to_file_peter_format(int n,int sample1, int sample2, int *sfs1,int *sfs2,char *sfs_filename)
 {
 
   FILE *file= fopen(sfs_filename, "w" );
@@ -940,7 +940,7 @@ output_sfs_to_file_peter_format(int n,int sample1, int sample2, int *sfs1,int *s
 
 }
 /******************************************************************************/
-output_sfs_to_file_peter_format2(int n,int sample1, int sample2, int *sfs1,int *sfs2,char *sfs_filename)
+void output_sfs_to_file_peter_format2(int n,int sample1, int sample2, int *sfs1,int *sfs2,char *sfs_filename)
 {
 
   FILE *file= fopen(sfs_filename, "w" );
@@ -968,7 +968,7 @@ fprintf(file,"0");
 
 }
 /******************************************************************************/
-get_sfs(int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename)
+void get_sfs(int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename)
 {
 
   int i=0;
@@ -1005,7 +1005,7 @@ get_sfs(int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename)
 
 }
 /******************************************************************************/
-get_sfs_peter1(int *total_neu,int *total_sel,int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename)
+void get_sfs_peter1(int *total_neu,int *total_sel,int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename)
 {
   int i=0;
   int gene_number=0,sum=0;
@@ -1041,7 +1041,7 @@ get_sfs_peter1(int *total_neu,int *total_sel,int *nalleles,float *sfs_sel,float 
   fclose(file);
 }
 /******************************************************************************/
-get_sfs_peter2(char *sfsname,float *total_neu,float *total_sel,int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename,float *sel_sites,float *sel_diff,float *neu_sites,float *neu_diff)
+void get_sfs_peter2(char *sfsname,float *total_neu,float *total_sel,int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename,float *sel_sites,float *sel_diff,float *neu_sites,float *neu_diff)
 {
 
   int i=0;
@@ -1144,7 +1144,7 @@ double randomly_select_allele_frequency(double *egf_vec, double *temp1, int nd)
   return(freq);
 }
 /******************************************************************************/
-set_up_cumulative_allele_freq_vec(int nd, double *egf_vec, double *cum_vec,
+void set_up_cumulative_allele_freq_vec(int nd, double *egf_vec, double *cum_vec,
 				  char *str)
 {
   int i;
@@ -1158,7 +1158,7 @@ set_up_cumulative_allele_freq_vec(int nd, double *egf_vec, double *cum_vec,
     }
 }
 /******************************************************************************/
-generate_simulated_data(double *egf_vec, int nsites, int sample_size, int nd,
+void generate_simulated_data(double *egf_vec, int nsites, int sample_size, int nd,
 			int *sfs)
 {
   int i, n_seg;
@@ -1176,7 +1176,7 @@ generate_simulated_data(double *egf_vec, int nsites, int sample_size, int nd,
 }
 
 /******************************************************************************/
-egf_scaling_s(int n1,double f0,double *v_s_in, double *v_s_out)
+void egf_scaling_s(int n1,double f0,double *v_s_in, double *v_s_out)
 {
 
   double sumx,sumy;
@@ -1198,7 +1198,7 @@ egf_scaling_s(int n1,double f0,double *v_s_in, double *v_s_out)
   v_s_out[0]=(1-sumy);
 }
 /******************************************************************************/
-egf_scaling_f0(int n1,double f0,double *fv)
+void egf_scaling_f0(int n1,double f0,double *fv)
 {
 
   int i;
@@ -1208,14 +1208,14 @@ egf_scaling_f0(int n1,double f0,double *fv)
   fv[0]+=f0;
 }
 /******************************************************************************/
-egf_scaling(int N,double f0,double *FV0,double *FVS)
+void egf_scaling(int N,double f0,double *FV0,double *FVS)
 {
   int n2d=N*2;
   egf_scaling_s(n2d,f0,FV0, FVS);
   egf_scaling_f0(n2d,f0,FVS);
 }
 /******************************************************************************/
-binomial_sampling(int n1,int alleles,int sample, double *invy,int *discrete)
+void binomial_sampling(int n1,int alleles,int sample, double *invy,int *discrete)
 {
 
   int s1=0,success=0;
