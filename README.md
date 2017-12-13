@@ -4,7 +4,7 @@
 
 gcc -O3 -o MultiDFE *.c  -lm -lgsl -lgslcblas -w
 
-Alternatively, you can also type
+Alternatively, you can also type  
 make
 
 2) Now you should have an executable Multi_DFE.
@@ -64,8 +64,9 @@ The output is appended to this file as lines that look like this:
 seed:0  acc:0   selmode:2       nspikes:0       ranrep:1        L:-217141.5448478720500134      f0:0.929167     N2:279  t:122.716564    Nw:172.576286   E(s):-1255.653717       beta:0.136181   Nes_0.0_0.1:1.114742E-01        Nes_0.1_1.0:4.105598E-02        Nes_1.0_10.0:5.617678E-02     Nes_10.0_100.0:7.686491E-02     mean:-1.192397E+01      mean2:-6.341868E+02     meanH:-7.711070E-03     fix_prob:0.141050  
 
 explanation of OUTPUT:  
-seed: the seed used for the random generator. You can change it by adding GSL_RNG_SEED= before the command.  
-GSL_RNG_SEED=1 ./MultiDFE -N1 100 -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.out  
+  
+seed: the seed used for the random generator. You can change it by adding GSL_RNG_SEED= before the command like this:  
+GSL_RNG_SEED=1 ./MultiDFE -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.out  
 
 L: the log-likelihood of the model given the data  
 

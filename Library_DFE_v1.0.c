@@ -36,14 +36,14 @@ int get_average_egf_vecs_1_and_2(double s,int n1, int n2, double t2_real,
   int n1d=2*n1;
   int n2d=2*n2;
 
-  if (s<-1)          
+  if (s<-1) {
     /* 
        The contribution of strongly selected mutations
        is assumed to be inversely proportional to s, as
        expected from mutation selection balance, with a
        contribution from phase 2 mutations only.
     */
-    {
+
       for (i=0; i<=2*n2; i++)
 	{
 	  egf_vec1[i] = 0;
@@ -51,8 +51,7 @@ int get_average_egf_vecs_1_and_2(double s,int n1, int n2, double t2_real,
 	}
       egf_vec2[1] = -2/s;
     }
-  else
-    {
+   else {
       res =  get_binary_egf_vec(buffer_p1_n2_t2_lower, n2, t2_lower, 
 				s, egf_vec1_lower);
       if (res==0) return 0;
@@ -1430,8 +1429,8 @@ double N1=(double)n1;
 double N2=(double)n2;
 double t2=(double)t;
 /*compute weighted Ne*/
-w1=N1*pow((1-1/(2*N2)),t2);
-w2=N2*(1-exp(-t2/(2*N2)));
+w1=pow((1-1/(2*N2)),t2);
+w2=(1-exp(-t2/(2*N2)));
 
 n_e=(N1*w1+N2*w2)/(w1+w2);
 
