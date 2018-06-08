@@ -9,7 +9,7 @@ gcc -O3 -o MultiDFE *.c  -lm -lgsl -lgslcblas -w
 Alternatively, you can also type  
 make
 
-Now you should have an executable Multi_DFE.
+Now you should have an executable named MultiDFE.
 ###Set-up:
 To run the program you need a folder with the lookup tables for the likelihood calculation. The program will not run without specifying the folder where these tables are located. These tables are quite large in size (4.5 Gbytes). 
 
