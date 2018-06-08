@@ -1705,17 +1705,18 @@ int argc; char **argv;
     Ne_s_lower=Ne_s_upper;
     Ne_s_upper*=10;
   }
-
+/*
   compute_mean_stats(s_evaluated_vec, n_s_evaluated);
   fprintf(fileresults,"mean:%E\tmean2:%E\tmeanH:%E\t",save_mle.mean_s,save_mle.mean_s2,save_mle.mean_h);
-
+*/
   //printf("lethals:%f\t",save_mle.lethal_prop);
   //monitorinput();
 
   /*code for reading simulated means*/
+  /*
   double MEAN_SIM[2], true_prop[4],true_fix_prob=0;
   if (fsim==1){
-    /*read simulated s and s^2 and harmonic mean*/
+    //read simulated s and s^2 and harmonic mean
     char filename_mean[maxnd]="";
     strcat(filename_mean,sfs_filename);
     FILE *file1= fopen(strcat(filename_mean,".mean"), "r" );
@@ -1725,8 +1726,10 @@ int argc; char **argv;
       fscanf (file1, "%f", &read);
       MEAN_SIM[i]=read;
     }
-
+*/
+/*
     fprintf(fileresults,"truemean:%E\ttruemean2:%E\ttruemeanH:%E\t",MEAN_SIM[0],MEAN_SIM[1],MEAN_SIM[2]);
+
 
     for(i = 0; i <= 3; i++){
       fscanf (file1, "%f", &read);
@@ -1739,7 +1742,7 @@ int argc; char **argv;
     fprintf(fileresults,"true_fix_prob:%f\t",true_fix_prob);
     close(file1);
   }//if fsim=1 end
-  
+*/
   fprintf(fileresults,"fix_prob:%lf\t",save_mle.fix_prob);
   
   fprintf(fileresults,"\n");
