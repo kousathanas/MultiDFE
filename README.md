@@ -47,7 +47,7 @@ Line2: SFS for selected class
 Line3: SFS for neutral class  
 
 the SFSs should always be of length sample size +1  
-if your you have a sample size of 20, then the SFS contains 21 values (this is because the 0th column, ie. unmutated class is included)  
+if you have a sample size of 20, then the SFS contains 21 values (this is because the 0th column, ie. unmutated class is included)  
 
 I recommend that you use always the folded spectrum so have option -sfsfold set to 1 (this will always fold the SFS).  
 
@@ -86,7 +86,9 @@ for the sel.coeffs and probabilities for each spike.
 
 then you also have several statistics printed such as:  
 prob. density in 4 Nes ranges:  
-Nes_0.0_0.1:1.114742E-01        Nes_0.1_1.0:4.105598E-02        Nes_1.0_10.0:5.617678E-02     Nes_10.0_100.0:7.686491E-02    
+Nes_0.0_0.1:1.114742E-01        Nes_0.1_1.0:4.105598E-02        Nes_1.0_10.0:5.617678E-02     Nes_10.0_100.0:7.686491E-02 
+
+please note that Nes >100 is not printed. It is equal to 1-sum(of other range proportions)   
 
 mean, squared mean E(s^2) (mean2) and harmonic mean effect of a new mutation (obtained through integration of the DFE):  
 mean:-1.192397E+01      mean2:-6.341868E+02     meanH:-7.711070E-03 
