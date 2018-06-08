@@ -97,7 +97,7 @@ the average fixation probability of a new mutation (this can be used together wi
 fix_prob:0.141050
 
 
-#########################################################################################  
+
 #########################################################################################  
 #GENERAL ADVICE 
 
@@ -110,11 +110,12 @@ Having large values for E(Nes) is not a problem and is usually expected because 
 ###To get alpha and omega_a:
 you should use the formulas 10 and 11 from Kousathanas and Keightley (2013). The average fixation probability is given by MultiDFE and to obtain dN and dS you just need to divide the number of nonsynonymous and synonymous substitutions over the number for sites, respectively. A simple Jukes-Cantor correction can be applied with an R-function:
 
-####################################
+```
+####################################   
 ***div.jukes***
 calculates Jukes-Cantor divergence.
 Input: x<-total sites,y<-site diffs
-####################################
+####################################   
 div.jukes<-function(x,y)
 {
 d<-vector(length=length(x));
@@ -128,7 +129,7 @@ d[i]=(-3/4)*log(1-(4/3)*p)
 
 return(d)
 }
-
+```
 
 ### Bad performance of the fixed 6-spikes and the beta models:
 usually the fixed 6-spikes and beta models have bad performance compared to the other models because they cannot predict mutations with very strong effects. The beta is constrained to s=[0,1], and there is a similar constraint for the 6-fixed spikes model. Of course s cannot be greater than 1, at least theoretically. But in the inference method s can be greater than 1 to be able to use sufficiently large Nes values to be fitted to a realistic dataset.
