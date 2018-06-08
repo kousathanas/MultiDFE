@@ -62,14 +62,12 @@ The output is appended to this file as lines that look like this:
 
 seed:0  acc:0   selmode:2       nspikes:0       ranrep:1        L:-217141.5448478720500134      f0:0.929167     N2:279  t:122.716564    Nw:172.576286   E(s):-1255.653717       beta:0.136181   Nes_0.0_0.1:1.114742E-01        Nes_0.1_1.0:4.105598E-02        Nes_1.0_10.0:5.617678E-02     Nes_10.0_100.0:7.686491E-02	fix_prob:0.141050  
 
-###explanation of OUTPUT:  
-  
+###explanation of OUTPUT:    
 * seed: 
 the seed used for the random generator. You can change it by adding GSL_RNG_SEED= before the command like this:  
 GSL_RNG_SEED=1 ./MultiDFE -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.out  
 
-* L:   
-the log-likelihood of the model given the data  
+* L: The log-likelihood of the model given the data  
 
 * Demographic parameter estimates:  
 f0: mutation parameter  
@@ -79,15 +77,12 @@ Nw: the weighted effective pop.size over the 2-epochs
 * Selection parameter estimates:   
 depending on the selection model you chose, the corresponding parameter estimates will be printed. For example if you chose gamma (-selmode 2) then you will get :  
 E(s):-1255.653717       beta:0.136181  
-
 if you chose a 2-spike model (-selmode 0 -nspikes 2),  you will get:  
 s1:-6.995761E-04        s2:-7.590491E-01        p1:1.738205E-01 p2:8.261795E-01  
-
 for the sel.coeffs and probabilities for each spike.  
 
 * Prob. density in 4 Nes ranges:  
-Nes_0.0_0.1:1.114742E-01        Nes_0.1_1.0:4.105598E-02        Nes_1.0_10.0:5.617678E-02     Nes_10.0_100.0:7.686491E-02 
-
+Nes_0.0_0.1:1.114742E-01        Nes_0.1_1.0:4.105598E-02        Nes_1.0_10.0:5.617678E-02     Nes_10.0_100.0:7.686491E-02   
 please note that Nes >100 is not printed. It is equal to 1-sum(of other range proportions)   
 
 * The average fixation probability of a new mutation:   
