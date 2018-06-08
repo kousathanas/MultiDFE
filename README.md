@@ -96,7 +96,7 @@ fix_prob:0.141050
 To get an estimate for E(Nes) you should multiply the entries Nw and E(s). It's the standard for comparison with other methods such as DFE_alpha. For the example: Nw:172.576286 E(s):-1255.653717 : Nw E(s)=−216696.   
 Having large values for E(Nes) is not a problem and is usually expected because there is not much power to estimate it for relatively small samples.
 
-###To get $\alpha$ and $omega_a$:
+###To get $\alpha$ and $\omega_a$:
 You should use the formulas 10 and 11 from Kousathanas and Keightley (2013). The average fixation probability $u$ is given by MultiDFE and to obtain dN and dS you just need to divide the number of nonsynonymous and synonymous substitutions over the number for sites, respectively. A simple Jukes-Cantor correction can be applied with an R-function:
 
 ```
