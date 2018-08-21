@@ -1,7 +1,9 @@
-#########################################################################################   
-#Steps for installing, setting-up and running MultiDFE
+# MultiDFE
 
-###Install:
+#########################################################################################   
+# Steps for installing, setting-up and running MultiDFE
+
+### Install:
 Unpack, cd to the unpacked directory and then compile with this command:
 
 gcc -O3 -o MultiDFE *.c  -lm -lgsl -lgslcblas -w
@@ -10,7 +12,7 @@ Alternatively, you can also type
 make
 
 Now you should have an executable named MultiDFE.
-###Set-up:
+### Set-up:
 To run the program you need a folder with the lookup tables for the likelihood calculation. The program will not run without specifying the folder where these tables are located. These tables are quite large in size (4.5 Gbytes). 
 
 These lookup tables can be downloaded here :  http://datashare.is.ed.ac.uk/bitstream/handle/10283/2730/data.tar.gz?sequence=1&isAllowed=y
@@ -19,14 +21,14 @@ If you have trouble downloading them make sure to contact me (kousathanas2 *at* 
 
 After you download these tables, you need to specify in the file "directory_config.dat" the location of the tables. The directory specification should branch so the contents of the specified folder are these 3 folders: n1_20, n1_100, n1_1000. In the present implemention only lookup tables in folder n1_100 will be used.
 
-###Run:
+### Run:
 If you have specified the lookup tables correctly then you can run the program with the following command:
 
 ./MultiDFE -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.sfs
 
 the example.sfs file has an example of the input SFS (see at the bottom of README for explanation)  
 
-###Explanation of arguments:  
+### Explanation of arguments:  
 * conpop    0/1    model population size change (2-epoch change/constant)  
 * sfsfold   0/1    fold sfs (no/yes)  
 * selmode (0/1/2/3/4/5)    selection model (spike/step/gamma/beta/lognormal/6-fixed-spikes)  
@@ -34,7 +36,7 @@ the example.sfs file has an example of the input SFS (see at the bottom of READM
 * ranrep (0..Inf)    Specify how many replicate runs you want from random starting values (recommended 5-10 for spike/step models).  
 
 #########################################################################################   
-#INPUT files
+# INPUT files
 
 Please check the example.sfs file which looks like this:  
 
@@ -54,7 +56,7 @@ if you have a sample size of 20, then the SFS contains 21 values (this is becaus
 I recommend that you use always the folded spectrum so have option -sfsfold set to 1 (this will always fold the SFS).  
 
 #########################################################################################    
-#OUTPUT files  
+# OUTPUT files  
 
 After the program finishes running you will get an output file that has the same name as the input but with the addition of .MAXL.out suffix  
 
@@ -64,7 +66,7 @@ The output is appended to this file as lines that look like this:
 
 seed:0  acc:0   selmode:2       nspikes:0       ranrep:1        L:-217141.5448478720500134      f0:0.929167     N2:279  t:122.716564    Nw:172.576286   E(s):-1255.653717       beta:0.136181   Nes_0.0_0.1:1.114742E-01        Nes_0.1_1.0:4.105598E-02        Nes_1.0_10.0:5.617678E-02     Nes_10.0_100.0:7.686491E-02	fix_prob:0.141050  
 
-###explanation of OUTPUT:    
+### explanation of OUTPUT:    
 * seed: 
 the seed used for the random generator. You can change it by adding GSL_RNG_SEED= before the command like this:  
 GSL_RNG_SEED=1 ./MultiDFE -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.out  
@@ -91,14 +93,14 @@ please note that Nes >100 is not printed. It is equal to 1-sum(of other range pr
 fix_prob:0.141050
 
 #########################################################################################  
-#GENERAL ADVICE 
+# GENERAL ADVICE 
 
-###For getting mean (Nes):
+### For getting mean (Nes):
 
 To get an estimate for E(Nes) you should multiply the entries Nw and E(s). It's the standard for comparison with other methods such as DFE_alpha. For the example: Nw:172.576286 E(s):-1255.653717 : Nw E(s)=−216696.   
 Having large values for E(Nes) is not a problem and is usually expected because there is not much power to estimate it for relatively small samples.
 
-###To get alpha and omega_a for quantifying adaptive evolution:
+### To get alpha and omega_a for quantifying adaptive evolution:
 You should use the formulas 10 and 11 from Kousathanas and Keightley (2013). The average fixation probability $u$ is given by MultiDFE and to obtain dN and dS you just need to divide the number of nonsynonymous and synonymous substitutions over the number for sites, respectively. A simple Jukes-Cantor correction can be applied with an R-function:
 
 ```
