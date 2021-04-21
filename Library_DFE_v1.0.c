@@ -967,21 +967,25 @@ fprintf(file,"0");
 
 }
 /******************************************************************************/
-void get_sfs(int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename)
+void get_nalleles(int *nalleles,char *sfs_filename)
+{
+  FILE *file= fopen(sfs_filename, "r" );
+  fscanf (file, "%d", nalleles);
+  fclose(file);
+}
+/******************************************************************************/
+void get_sfs(int nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename)
 {
 
   int i=0;
   int gene_number=0,sum=0;
+  int test=0;
   FILE *file= fopen(sfs_filename, "r" );
-
-  fscanf (file, "%d", nalleles);
-
-  //printf("%s %d %d %d %d %d\n",name,sel_sites,sel_diff,neu_sites,neu_diff,*nalleles);
-
+  fscanf (file, "%d", &test);
   fscanf (file, "%f", &sfs_sel[0]);
-  //printf("%d\n",sfs_sel[0]);
+  //printf("%f\n",sfs_sel[0]);
   sum=0;
-  for (i =1 ;i<=*nalleles; i++)
+  for (i =1 ;i<=nalleles; i++)
     {
       fscanf (file, "%f", &sfs_sel[i]);
       //printf("%f\n",sfs_sel[i]);
@@ -992,7 +996,7 @@ void get_sfs(int *nalleles,float *sfs_sel,float *sfs_neu,char *sfs_filename)
   fscanf (file, "%f", &sfs_neu[0]);
   //printf("%d\n",sfs_neu[0]);
   sum=0;
-  for (i =1 ;i<=*nalleles; i++)
+  for (i =1 ;i<=nalleles; i++)
     {
       fscanf (file, "%f", &sfs_neu[i]);
       //printf("%d\n",sfs_neu[i]);

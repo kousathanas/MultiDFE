@@ -1553,14 +1553,15 @@ int argc; char **argv;
 
   /* Read the SFS*/ 
   float total_neu=0,total_sel=0;
-  int max_sfs_size=2000;
+
   float *sfs_sel,*sfs_neu,*par;
   float *sel_sites,*sel_diff,*neu_sites,*neu_diff;
-  char sfsname[2000];
-  nalleles=0;
+
+  int *nallelesp=&nalleles;
+  get_nalleles(nallelesp,sfs_filename);
   
-  sfs_sel = calloc (max_sfs_size, sizeof(float));
-  sfs_neu = calloc (max_sfs_size, sizeof(float));
+  sfs_sel = calloc (nalleles+1, sizeof(float));
+  sfs_neu = calloc (nalleles+1, sizeof(float));
 
   /* read in the SFS
      FORMAT: 
@@ -1568,11 +1569,7 @@ int argc; char **argv;
      selected sfs[0..nalleles]
      neutral sfs[0..nalleles]
   */
-
-  //get_sfs_peter1(&total_neu,&total_sel,&nalleles,sfs_sel,sfs_neu,sfs_filename);
-  //get_sfs_peter2(&sfsname,&total_neu,&total_sel,&nalleles,sfs_sel,sfs_neu,sfs_filename,&sel_sites,&sel_diff,&neu_sites,&neu_diff);
-  get_sfs(&nalleles,sfs_sel,sfs_neu,sfs_filename);
-
+  get_sfs(nalleles,sfs_sel,sfs_neu,sfs_filename);
   par = calloc (2*(nalleles+1), sizeof(float));
 
   /* get the directory path where the precomputed allele frequency vector tables are located*/
@@ -1785,8 +1782,8 @@ int argc; char **argv;
   FILE *freq_SFS_sel= fopen(strcat(filename_freq_SFS_sel,".obs-exp.neu-sel.SFS.out"), "w" );
   int *sfs_freqS,*sfs_freqN;
 
-  sfs_freqS = calloc (max_sfs_size, sizeof(int));
-  sfs_freqN = calloc (max_sfs_size, sizeof(int));
+  sfs_freqS = calloc (nalleles, sizeof(int));
+  sfs_freqN = calloc (nalleles, sizeof(int));
   
   sfsfold_f(nalleles,discreteS,sfs_freqS,0);
   sfsfold_f(nalleles,discreteN,sfs_freqN,0);

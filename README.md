@@ -69,7 +69,7 @@ seed:0  acc:0   selmode:2       nspikes:0       ranrep:1        L:-217141.544847
 ### explanation of OUTPUT:    
 * seed: 
 the seed used for the random generator. You can change it by adding GSL_RNG_SEED= before the command like this:  
-GSL_RNG_SEED=1 ./MultiDFE -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.out  
+GSL_RNG_SEED=1 ./MultiDFE -conpop 0 -sfsfold 1 -selmode 2 -nspikes 0 -ranrep 1 -file example.sfs 
 
 * L: The log-likelihood of the model given the data  
 
